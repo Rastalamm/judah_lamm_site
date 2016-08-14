@@ -1,0 +1,52 @@
+server {
+    # Redirect HTTP to HTTPS
+
+    listen 80;
+    server_name www.judahlamm.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    # Redirect HTTP bare domain to HTTPS
+
+    # http://stackoverflow.com/a/15517045/2374361
+
+    listen 80;
+    server_name 104.131.13.110 judahlamm.com;
+    return 301 $scheme://www.judahlamm.com$request_uri;
+}
+
+server {
+    # Redirect HTTPS bare domain to https://www.judahlamm.com
+
+    # http://stackoverflow.com/a/22730224/2374361
+
+    listen 443 ssl;
+    server_name 104.131.13.110 judahlamm.com;
+
+    ssl_certificate /etc/letsencrypt/live/judahlamm.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/judahlamm.com/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+
+    return 301 https://www.judahlamm.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name www.judahlamm.com;
+
+    ssl_certificate /etc/letsencrypt/live/judahlamm.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/judahlamm.com/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+
+
+    location / {
+        root /srv/judahlamm;
+    }
+}
