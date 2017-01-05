@@ -16,6 +16,8 @@
         extended: false
     }));
 
+    app.use('/', (ignore, res) => {res.status(200).render("index.pug")});
+
     app.use(function (ignore, res) {
         res.status(404).render("404/index.pug");
     });
