@@ -12,7 +12,7 @@ server {
     # http://stackoverflow.com/a/15517045/2374361
 
     listen 80;
-    server_name 104.131.13.110 judahlamm.com;
+    server_name 54.159.134.237 judahlamm.com;
     return 301 $scheme://www.judahlamm.com$request_uri;
 }
 
@@ -22,7 +22,7 @@ server {
     # http://stackoverflow.com/a/22730224/2374361
 
     listen 443 ssl;
-    server_name 104.131.13.110 judahlamm.com;
+    server_name 54.159.134.237 judahlamm.com;
 
     ssl_certificate /etc/letsencrypt/live/judahlamm.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/judahlamm.com/privkey.pem;
