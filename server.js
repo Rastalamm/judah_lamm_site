@@ -2,10 +2,11 @@
     const express = require('express');
     const app = express();
     const bodyParser = require('body-parser');
+    const path = require('path');
 
     let server;
 
-    app.set('view engine', 'jade');
+    app.set('view engine', 'pug');
     app.set('views', path.join(__dirname, '/views'));
     app.use(express.static('public'));
     app.use('/images', express.static(__dirname + '/images'));
@@ -15,13 +16,11 @@
         extended: false
     }));
 
-    app.use('/', apiRouter);
-
     app.use(function (ignore, res) {
-        res.status(404).render("404/index.jade");
+        res.status(404).render("404/index.pug");
     });
 
-    server = app.listen(process.env.app_port || 8080, function () {
+    server = app.listen(process.env.app_port || 3000, function () {
         const host = server.address().address;
         const port = server.address().port;
 
