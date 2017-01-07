@@ -6,7 +6,7 @@ router.get('/', (ignore, res) => {
 });
 
 router.get('/schedule', (ignore, res) => {
-    res.redirect('https://calendly.com/judah-lamm');
+    res.redirect(302, 'https://calendly.com/judah-lamm');
 });
 
 module.exports = router
