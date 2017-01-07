@@ -7,7 +7,8 @@
     "start": "nodemon server.js"
   },
   "devDependencies": {
-    "jade": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pm2": "^2.2.3"
   },
   "dependencies": {
     "bluebird": "^3.4.1",
