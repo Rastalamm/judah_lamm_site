@@ -9,9 +9,7 @@ const helmet = require('helmet')
 let server;
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '/views'));
-app.use(express.static('public'));
-app.use('/images', express.static(__dirname + '/images'));
+app.set('views', path.join(__dirname, '/templates/views'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
